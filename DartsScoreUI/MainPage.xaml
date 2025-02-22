@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DartsScore.MainPage" Shell.NavBarIsVisible="false">
+    <VerticalStackLayout Padding="30,0" Spacing="25">
+        <Label Text="Playing Darts" Style="{StaticResource Headline}" SemanticProperties.HeadingLevel="Level1" />
+        <Entry x:Name="RemainingScoreInput" HorizontalTextAlignment="Center" Keyboard="Numeric" Placeholder="Input the remaining score" 
+               MaxLength="3" TextChanged="SetCalculateWinningRoundButtonState" />
+        <Button x:Name="CalculateWinningRoundButton" Text="Can I win?" Clicked="CalculateWinningRound" HorizontalOptions="Fill" 
+                IsEnabled="false" />
+        <Label x:Name="Answer" Style="{StaticResource SubHeadline}" TextColor="Gray" />
+    </VerticalStackLayout>
+</ContentPage>
