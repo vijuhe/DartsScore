@@ -46,8 +46,7 @@ public class WinningRoundTests
         {
             Assert.That(result.CanWin, Is.True);
             Assert.That(result.FirstThrow!.Score, Is.EqualTo(doubleThrow));
-            Assert.That(result.FirstThrow.IsDouble, Is.True);
-            Assert.That(result.FirstThrow.IsTriple, Is.False);
+            Assert.That(result.FirstThrow.Multiplier, Is.EqualTo(Multiplier.Double));
             Assert.That(result.SecondThrow, Is.Null);
             Assert.That(result.ThirdThrow, Is.Null);
         });
@@ -64,11 +63,9 @@ public class WinningRoundTests
         {
             Assert.That(result.CanWin, Is.True);
             Assert.That(result.FirstThrow!.Score, Is.EqualTo(singleFirstThrow));
-            Assert.That(result.FirstThrow.IsDouble, Is.False);
-            Assert.That(result.FirstThrow.IsTriple, Is.False);
+            Assert.That(result.FirstThrow.Multiplier, Is.EqualTo(Multiplier.Single));
             Assert.That(result.SecondThrow!.Score, Is.EqualTo(doubleSecondThrow));
-            Assert.That(result.SecondThrow.IsDouble, Is.True);
-            Assert.That(result.SecondThrow.IsTriple, Is.False);
+            Assert.That(result.SecondThrow.Multiplier, Is.EqualTo(Multiplier.Double));
             Assert.That(result.ThirdThrow, Is.Null);
         });
     }
@@ -84,11 +81,9 @@ public class WinningRoundTests
         {
             Assert.That(result.CanWin, Is.True);
             Assert.That(result.FirstThrow!.Score, Is.EqualTo(doubleFirstThrow));
-            Assert.That(result.FirstThrow.IsDouble, Is.True);
-            Assert.That(result.FirstThrow.IsTriple, Is.False);
+            Assert.That(result.FirstThrow.Multiplier, Is.EqualTo(Multiplier.Double));
             Assert.That(result.SecondThrow!.Score, Is.EqualTo(doubleSecondThrow));
-            Assert.That(result.SecondThrow.IsDouble, Is.True);
-            Assert.That(result.SecondThrow.IsTriple, Is.False);
+            Assert.That(result.SecondThrow.Multiplier, Is.EqualTo(Multiplier.Double));
             Assert.That(result.ThirdThrow, Is.Null);
         });
     }
@@ -104,11 +99,9 @@ public class WinningRoundTests
         {
             Assert.That(result.CanWin, Is.True);
             Assert.That(result.FirstThrow!.Score, Is.EqualTo(tripleFirstThrow));
-            Assert.That(result.FirstThrow.IsDouble, Is.False);
-            Assert.That(result.FirstThrow.IsTriple, Is.True);
+            Assert.That(result.FirstThrow.Multiplier, Is.EqualTo(Multiplier.Triple));
             Assert.That(result.SecondThrow!.Score, Is.EqualTo(doubleSecondThrow));
-            Assert.That(result.SecondThrow.IsDouble, Is.True);
-            Assert.That(result.SecondThrow.IsTriple, Is.False);
+            Assert.That(result.SecondThrow.Multiplier, Is.EqualTo(Multiplier.Double));
             Assert.That(result.ThirdThrow, Is.Null);
         });
     }
@@ -123,14 +116,11 @@ public class WinningRoundTests
         {
             Assert.That(result.CanWin, Is.True);
             Assert.That(result.FirstThrow!.Score, Is.EqualTo(singleFirstThrow));
-            Assert.That(result.FirstThrow.IsDouble, Is.False);
-            Assert.That(result.FirstThrow.IsTriple, Is.False);
+            Assert.That(result.FirstThrow.Multiplier, Is.EqualTo(Multiplier.Single));
             Assert.That(result.SecondThrow!.Score, Is.EqualTo(tripleSecondThrow));
-            Assert.That(result.SecondThrow.IsDouble, Is.False);
-            Assert.That(result.SecondThrow.IsTriple, Is.True);
+            Assert.That(result.SecondThrow.Multiplier, Is.EqualTo(Multiplier.Triple));
             Assert.That(result.ThirdThrow!.Score, Is.EqualTo(doubleThirdThrow));
-            Assert.That(result.ThirdThrow.IsDouble, Is.True);
-            Assert.That(result.ThirdThrow.IsTriple, Is.False);
+            Assert.That(result.ThirdThrow.Multiplier, Is.EqualTo(Multiplier.Double));
         });
     }
 
@@ -144,14 +134,11 @@ public class WinningRoundTests
         {
             Assert.That(result.CanWin, Is.True);
             Assert.That(result.FirstThrow!.Score, Is.EqualTo(doubleFirstThrow));
-            Assert.That(result.FirstThrow.IsDouble, Is.True);
-            Assert.That(result.FirstThrow.IsTriple, Is.False);
+            Assert.That(result.FirstThrow.Multiplier, Is.EqualTo(Multiplier.Double));
             Assert.That(result.SecondThrow!.Score, Is.EqualTo(tripleSecondThrow));
-            Assert.That(result.SecondThrow.IsDouble, Is.False);
-            Assert.That(result.SecondThrow.IsTriple, Is.True);
+            Assert.That(result.SecondThrow.Multiplier, Is.EqualTo(Multiplier.Triple));
             Assert.That(result.ThirdThrow!.Score, Is.EqualTo(doubleThirdThrow));
-            Assert.That(result.ThirdThrow.IsDouble, Is.True);
-            Assert.That(result.ThirdThrow.IsTriple, Is.False);
+            Assert.That(result.ThirdThrow.Multiplier, Is.EqualTo(Multiplier.Double));
         });
     }
 
@@ -165,14 +152,11 @@ public class WinningRoundTests
         {
             Assert.That(result.CanWin, Is.True);
             Assert.That(result.FirstThrow!.Score, Is.EqualTo(tripleFirstThrow));
-            Assert.That(result.FirstThrow.IsDouble, Is.False);
-            Assert.That(result.FirstThrow.IsTriple, Is.True);
+            Assert.That(result.FirstThrow.Multiplier, Is.EqualTo(Multiplier.Triple));
             Assert.That(result.SecondThrow!.Score, Is.EqualTo(tripleSecondThrow));
-            Assert.That(result.SecondThrow.IsDouble, Is.False);
-            Assert.That(result.SecondThrow.IsTriple, Is.True);
+            Assert.That(result.SecondThrow.Multiplier, Is.EqualTo(Multiplier.Triple));
             Assert.That(result.ThirdThrow!.Score, Is.EqualTo(doubleThirdThrow));
-            Assert.That(result.ThirdThrow.IsDouble, Is.True);
-            Assert.That(result.ThirdThrow.IsTriple, Is.False);
+            Assert.That(result.ThirdThrow.Multiplier, Is.EqualTo(Multiplier.Double));
         });
     }
 

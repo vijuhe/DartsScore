@@ -52,11 +52,11 @@ public partial class MainPage : ContentPage
 
     private static string ToString(Throw @throw)
     {
-        if (@throw.IsDouble)
+        if (@throw.Multiplier == Multiplier.Double)
         {
             return $"D{@throw.Score}";
         }
-        if (@throw.IsTriple)
+        if (@throw.Multiplier == Multiplier.Triple)
         {
             return $"T{@throw.Score}";
         }

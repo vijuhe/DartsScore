@@ -34,7 +34,7 @@ public class DartsGame
                 FirstThrow = new Throw
                 {
                     Score = (byte)(remainingScore / 2),
-                    IsDouble = true
+                    Multiplier = Multiplier.Double
                 }
             };
         }
@@ -53,7 +53,7 @@ public class DartsGame
                     SecondThrow = new Throw
                     {
                         Score = (byte)((remainingScore - point) / 2),
-                        IsDouble = true
+                        Multiplier = Multiplier.Double
                     }
                 };
             }
@@ -70,12 +70,12 @@ public class DartsGame
                     FirstThrow = new Throw
                     {
                         Score = point,
-                        IsDouble = true
+                        Multiplier = Multiplier.Double
                     },
                     SecondThrow = new Throw
                     {
                         Score = (byte)((remainingScore - @double) / 2),
-                        IsDouble = true
+                        Multiplier = Multiplier.Double
                     }
                 };
             }
@@ -92,12 +92,12 @@ public class DartsGame
                     FirstThrow = new Throw
                     {
                         Score = point,
-                        IsTriple = true
+                        Multiplier = Multiplier.Triple
                     },
                     SecondThrow = new Throw
                     {
                         Score = (byte)((remainingScore - triple) / 2),
-                        IsDouble = true
+                        Multiplier = Multiplier.Double
                     }
                 };
             }
@@ -120,12 +120,12 @@ public class DartsGame
                         SecondThrow = new Throw
                         {
                             Score = secondPoint,
-                            IsTriple = true
+                            Multiplier = Multiplier.Triple
                         },
                         ThirdThrow = new Throw
                         {
                             Score = (byte)((remainingScore - point - tripleSecond) / 2),
-                            IsDouble = true
+                            Multiplier = Multiplier.Double
                         }
                     };
                 }
@@ -146,17 +146,17 @@ public class DartsGame
                         FirstThrow = new Throw
                         {
                             Score = point,
-                            IsDouble = true
+                            Multiplier = Multiplier.Double
                         },
                         SecondThrow = new Throw
                         {
                             Score = secondPoint,
-                            IsTriple = true
+                            Multiplier = Multiplier.Triple
                         },
                         ThirdThrow = new Throw
                         {
                             Score = (byte)((remainingScore - doubleFirst - tripleSecond) / 2),
-                            IsDouble = true
+                            Multiplier = Multiplier.Double
                         }
                     };
                 }
@@ -178,17 +178,17 @@ public class DartsGame
                         FirstThrow = new Throw
                         {
                             Score = point,
-                            IsTriple = true
+                            Multiplier = Multiplier.Triple
                         },
                         SecondThrow = new Throw
                         {
                             Score = secondPoint,
-                            IsTriple = true
+                            Multiplier = Multiplier.Triple
                         },
                         ThirdThrow = new Throw
                         {
                             Score = (byte)((remainingScore - tripleFirst - tripleSecond) / 2),
-                            IsDouble = true
+                            Multiplier = Multiplier.Double
                         }
                     };
                 }
