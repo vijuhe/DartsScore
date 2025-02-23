@@ -11,26 +11,30 @@ public class DartsGame
         descendingPointsWithDoubles = [..descendingPointsWithDoublesOnly.Concat(descendingPointsWithTriplesAndDoubles).OrderDescending()];
     }
     
-    public WinningRound CalculateWinningRound(ushort remainingScore)
+    public WinningFinish CalculateWinningFinish(ushort remainingScore, byte remainingThrows)
     {
         if (remainingScore > 501 || remainingScore == 0)
         {
             throw new ArgumentOutOfRangeException($"Darts game cannot have a remaining score of {remainingScore}.");
         }
+        if (remainingThrows > 3 || remainingThrows == 0)
+        {
+            throw new ArgumentOutOfRangeException($"Darts game round cannot have {remainingThrows} throws left.");
+        }
 
         if (TooHighToWin(remainingScore) || remainingScore < 2)
         {
-            return new WinningRound
+            return new WinningFinish
             {
-                CanWin = false
+                IsPossible = false
             };
         }
 
         if (CanWinWithOneThrow(remainingScore))
         {
-            return new WinningRound
+            return new WinningFinish
             {
-                CanWin = true,
+                IsPossible = true,
                 FirstThrow = new Throw
                 {
                     Score = (byte)(remainingScore / 2),
@@ -39,13 +43,21 @@ public class DartsGame
             };
         }
 
+        if (remainingThrows == 1)
+        {
+            return new WinningFinish
+            {
+                IsPossible = false
+            };
+        }
+
         foreach (byte point in descendingPointsWithTriplesAndDoubles)
         {
             if (CanWinWithOneThrow((ushort)(remainingScore - point)))
             {
-                return new WinningRound
+                return new WinningFinish
                 {
-                    CanWin = true,
+                    IsPossible = true,
                     FirstThrow = new Throw
                     {
                         Score = point
@@ -64,9 +76,9 @@ public class DartsGame
             byte @double = (byte)(point * 2);
             if (CanWinWithOneThrow((ushort)(remainingScore - @double)))
             {
-                return new WinningRound
+                return new WinningFinish
                 {
-                    CanWin = true,
+                    IsPossible = true,
                     FirstThrow = new Throw
                     {
                         Score = point,
@@ -86,9 +98,9 @@ public class DartsGame
             byte triple = (byte)(point * 3);
             if (CanWinWithOneThrow((ushort)(remainingScore - triple)))
             {
-                return new WinningRound
+                return new WinningFinish
                 {
-                    CanWin = true,
+                    IsPossible = true,
                     FirstThrow = new Throw
                     {
                         Score = point,
@@ -103,6 +115,14 @@ public class DartsGame
             }
         }
 
+        if (remainingThrows == 2)
+        {
+            return new WinningFinish
+            {
+                IsPossible = false
+            };
+        }
+
         foreach (byte point in descendingPointsWithTriplesAndDoubles)
         {
             foreach (byte secondPoint in descendingPointsWithTriplesAndDoubles)
@@ -110,9 +130,9 @@ public class DartsGame
                 byte tripleSecond = (byte)(secondPoint * 3);
                 if (CanWinWithOneThrow((ushort)(remainingScore - point - tripleSecond)))
                 {
-                    return new WinningRound
+                    return new WinningFinish
                     {
-                        CanWin = true,
+                        IsPossible = true,
                         FirstThrow = new Throw
                         {
                             Score = point
@@ -140,9 +160,9 @@ public class DartsGame
                 byte tripleSecond = (byte)(secondPoint * 3);
                 if (CanWinWithOneThrow((ushort)(remainingScore - doubleFirst - tripleSecond)))
                 {
-                    return new WinningRound
+                    return new WinningFinish
                     {
-                        CanWin = true,
+                        IsPossible = true,
                         FirstThrow = new Throw
                         {
                             Score = point,
@@ -172,9 +192,9 @@ public class DartsGame
                 byte tripleSecond = (byte)(secondPoint * 3);
                 if (CanWinWithOneThrow((ushort)(remainingScore - tripleFirst - tripleSecond)))
                 {
-                    return new WinningRound
+                    return new WinningFinish
                     {
-                        CanWin = true,
+                        IsPossible = true,
                         FirstThrow = new Throw
                         {
                             Score = point,
@@ -195,9 +215,9 @@ public class DartsGame
             }
         }
 
-        return new WinningRound
+        return new WinningFinish
         {
-            CanWin = false
+            IsPossible = false
         };
     }
 

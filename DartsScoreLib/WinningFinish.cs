@@ -1,8 +1,8 @@
 ﻿namespace DartsScoreLib;
 
-public record WinningRound
+public record WinningFinish
 {
-    public bool CanWin { get; internal set; }
+    public bool IsPossible { get; internal set; }
     public Throw? FirstThrow { get; internal set; }
     public Throw? SecondThrow { get; internal set; }
     public Throw? ThirdThrow { get; internal set; }

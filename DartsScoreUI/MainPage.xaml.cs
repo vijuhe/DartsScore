@@ -28,8 +28,8 @@ public partial class MainPage : ContentPage
     private void CalculateWinningRound(object sender, EventArgs e)
     {
         ushort remainingScore = ushort.Parse(RemainingScoreInput.Text);
-        WinningRound round = game.CalculateWinningRound(remainingScore);
-        if (round.CanWin)
+        WinningFinish round = game.CalculateWinningFinish(remainingScore, GetRemainingThrows());
+        if (round.IsPossible)
         {
             StringBuilder answerBuilder = new(ToString(round.FirstThrow!));
             if (round.SecondThrow != null)
@@ -50,16 +50,17 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private byte GetRemainingThrows()
+    {
+        if (OneThrowLeft.IsChecked) return 1;
+        if (TwoThrowsLeft.IsChecked) return 2;
+        return 3;
+    }
+
     private static string ToString(Throw @throw)
     {
-        if (@throw.Multiplier == Multiplier.Double)
-        {
-            return $"D{@throw.Score}";
-        }
-        if (@throw.Multiplier == Multiplier.Triple)
-        {
-            return $"T{@throw.Score}";
-        }
+        if (@throw.Multiplier == Multiplier.Double) return $"D{@throw.Score}";
+        if (@throw.Multiplier == Multiplier.Triple) return $"T{@throw.Score}";
         return @throw.Score.ToString();
     }
 }

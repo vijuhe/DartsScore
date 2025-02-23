@@ -4,9 +4,15 @@
     <VerticalStackLayout Padding="30,0" Spacing="25">
         <Label Text="Playing Darts" Style="{StaticResource Headline}" SemanticProperties.HeadingLevel="Level1" />
         <Entry x:Name="RemainingScoreInput" HorizontalTextAlignment="Center" Keyboard="Numeric" Placeholder="Input the remaining score" 
-               MaxLength="3" TextChanged="SetCalculateWinningRoundButtonState" />
+               MaxLength="3" TextChanged="SetCalculateWinningRoundButtonState" FontSize="Large" />
+        <Label Text="How many throws do you have left?" FontSize="Medium" />
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <RadioButton x:Name="OneThrowLeft" FontSize="Large" Content="1" />
+            <RadioButton x:Name="TwoThrowsLeft" FontSize="Large" Content="2" />
+            <RadioButton x:Name="ThreeThrowsLeft" FontSize="Large" Content="3" IsChecked="True" />
+        </HorizontalStackLayout>
         <Button x:Name="CalculateWinningRoundButton" Text="Can I win?" Clicked="CalculateWinningRound" HorizontalOptions="Fill" 
-                IsEnabled="false" />
+                IsEnabled="false" FontSize="Medium" />
         <Label x:Name="Answer" Style="{StaticResource SubHeadline}" TextColor="Gray" />
     </VerticalStackLayout>
 </ContentPage>
