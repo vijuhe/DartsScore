@@ -34,11 +34,11 @@ public partial class MainPage : ContentPage
             StringBuilder answerBuilder = new(ToString(round.FirstThrow!));
             if (round.SecondThrow != null)
             {
-                answerBuilder.Append(' ');
+                answerBuilder.Append("  ");
                 answerBuilder.Append(ToString(round.SecondThrow));
                 if (round.ThirdThrow != null)
                 {
-                    answerBuilder.Append(' ');
+                    answerBuilder.Append("  ");
                     answerBuilder.Append(ToString(round.ThirdThrow));
                 }
             }
@@ -59,7 +59,7 @@ public partial class MainPage : ContentPage
 
     private static string ToString(Throw @throw)
     {
-        if (@throw.Multiplier == Multiplier.Double) return $"D{@throw.Score}";
+        if (@throw.Multiplier == Multiplier.Double) return @throw.Score == 25 ? "BULL" : $"D{@throw.Score}";
         if (@throw.Multiplier == Multiplier.Triple) return $"T{@throw.Score}";
         return @throw.Score.ToString();
     }
